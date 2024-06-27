@@ -1,39 +1,20 @@
-<?php
-include 'koneksi.php';
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $dosen = $_POST['dosen'];
-    $task = $_POST['tugas'];
-    $due_date = $_POST['due_date'];
-
-    $sql = "INSERT INTO tugas (dosen, tugas, due_date) VALUES ('$dosen', '$tugas', '$due_date')";
-
-    if ($conn->query($sql) === TRUE) {
-        echo "Tugas sukses di tambahkan";
-    } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
-    }
-
-    $conn->close();
-}
-?>
-
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Input Tugas</title>
+    <title>Tambah Tugas</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h2>Tambah Tugas</h2>
-    <form method="post" action="add_task.php">
-        <label for="dosen">Dosen:</label><br>
-        <input type="text" id="dosen" name="dosen" required><br>
-        <label for="tugas">Tugas:</label><br>
-        <input type="text" id="tugas" name="tugas" required><br>
-        <label for="due_date">Due Date:</label><br>
-        <input type="date" id="due_date" name="due_date" required><br><br>
-        <input type="submit" value="Add tugas">
+    <h1>Tambah Tugas</h1>
+    <form action="input_tugas_proses.php" method="post">
+        ID: <input type="text" name="id" required><br>
+        Nama: <input type="text" name="nama" required><br>
+        Tugas: <input type="text" name="tugas" required><br>
+        Deadline: <input type="date" name="deadline" required><br>
+        Status: <input type="text" name="status" required><br>
+        <input type="submit" value="Tambah">
     </form>
-    <a href="index.php">Back to Home</a>
+    <br>
+    <a href="index.php">Kembali ke Halaman Dosen</a>
 </body>
 </html>

@@ -8,41 +8,44 @@ $result = $conn->query($sql);
 <!DOCTYPE html>
 <html>
 <head>
-    <h1>Data Dosen</h1>
+    <title>Halaman Dosen</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h2>To-Do List</h2>
+    <h1>To-Do List</h1>
     <a href="input_tugas.php">Tambah Tugas</a><br><br>
     <table border="1">
         <tr>
             <th>ID</th>
-            <th>Dosen</th>
+            <th>Nama</th>
             <th>Tugas</th>
-            <th>Due Date</th>
+            <th>Deadline</th>
             <th>Status</th>
-            <th>Action</th>
+            <th>Aksi</th>
         </tr>
         <?php
         if ($result->num_rows > 0) {
             while($row = $result->fetch_assoc()) {
                 echo "<tr>
                     <td>".$row["id"]."</td>
-                    <td>".$row["dosen"]."</td>
+                    <td>".$row["nama"]."</td>
                     <td>".$row["tugas"]."</td>
-                    <td>".$row["due_date"]."</td>
+                    <td>".$row["deadline"]."</td>
                     <td>".$row["status"]."</td>
                     <td>
-                        <a href='edit_task.php?id=".$row["id"]."'>Edit</a> | 
-                        <a href='delete_task.php?id=".$row["id"]."'>Delete</a>
+                        <a href='edit_tugas.php?id=".$row["id"]."'>Edit</a> | 
+                        <a href='hapus_tugas.php?id=".$row["id"]."'>Hapus</a>
                     </td>
                 </tr>";
             }
         } else {
-            echo "<tr><td colspan='6'>No tasks found</td></tr>";
+            echo "<tr><td colspan='6'>Tidak ada tugas</td></tr>";
         }
         ?>
     </table>
 </body>
+
+<footer>Halaman Dosen</footer>
 </html>
 
 <?php
